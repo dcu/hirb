@@ -294,7 +294,7 @@ module Hirb
     rows.map {|row|
       @fields.inject({}) {|new_row,f|
         (filter = @options[:filters][f]) || (@options[:filter_any] && (filter = @filter_classes[row[f].class]))
-        new_row[f] = filter ? call_filter(filter, row[f]) : row[f]
+        new_row[f] = filter ? call_filter(filter, row[f]).inspect : row[f].inspect
         new_row
       }
     }
